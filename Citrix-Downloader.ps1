@@ -80,17 +80,17 @@ function get-ctxbinary {
   Path to store downloaded file. Must contain following slash (c:\temp\)
 .PARAMETER CitrixUserName
   Citrix.com username
-.PARAMETER CitrixPassword
+.PARAMETER CitrixPW
   Citrix.com password
 .EXAMPLE
-  Get-CTXBinary -DLNUMBER "16834" -DLEXE "Citrix_Virtual_Apps_and_Desktops_7_1912.iso" -CitrixUserName "mycitrixusername" -CitrixPassword "mycitrixpassword" -DLPATH "C:\temp\"
+  Get-CTXBinary -DLNUMBER "16834" -DLEXE "Citrix_Virtual_Apps_and_Desktops_7_1912.iso" -CitrixUserName "mycitrixusername" -CitrixPW "mycitrixpassword" -DLPATH "C:\temp\"
 #>
 	Param(
 		[Parameter(Mandatory = $true)]$DLNUMBER,
 		[Parameter(Mandatory = $true)]$DLEXE,
 		[Parameter(Mandatory = $true)]$DLPATH,
 		[Parameter(Mandatory = $true)]$CitrixUserName,
-		[Parameter(Mandatory = $true)]$CitrixPassword
+		[Parameter(Mandatory = $true)]$CitrixPW
 	)
 	#Initialize Session 
 	Invoke-WebRequest "https://identity.citrix.com/Utility/STS/Sign-In?ReturnUrl=%2fUtility%2fSTS%2fsaml20%2fpost-binding-response" -SessionVariable websession -UseBasicParsing | Out-Null
@@ -99,7 +99,7 @@ function get-ctxbinary {
 	$form = @{
 		"persistent" = "on"
 		"userName"   = $CitrixUserName
-		"password"   = $CitrixPassword
+		"password"   = $CitrixPW
 	}
 
 	#Authenticate
@@ -213,7 +213,7 @@ If (!($NoUpdate)) {
 
 $creds = Get-Credential -Message "Citrix Credentials"
 $CitrixUserName = $creds.UserName
-$CitrixPassword = $creds.GetNetworkCredential().Password
+$CitrixPW = $creds.GetNetworkCredential().Password
 
 #Imports $CSV with download information
 #$downloads = import-csv -Path ".\Helpers\Downloads.csv" -Delimiter ","
@@ -225,5 +225,5 @@ $dls = $downloads | Out-GridView -PassThru -Title "Select Installer or ISO to do
 #Processes each download
 foreach ($dl in $dls) {
     write-host "Downloading $($dl.filename)..."
-    Get-CTXBinary -DLNUMBER $dl.dlnumber -DLEXE $dl.filename -CitrixUserName $CitrixUserName -CitrixPassword $CitrixPassword -DLPATH $path
+    Get-CTXBinary -DLNUMBER $dl.dlnumber -DLEXE $dl.filename -CitrixUserName $CitrixUserName -CitrixPassword $CitrixPW -DLPATH $path
 }
