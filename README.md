@@ -6,7 +6,7 @@ Thanks to the initial creator Ryan Butler.
 
 
 <p align="center">
-  <img src="https://github.com/Deyda/Citrix-Downloader/blob/main/img/Citrix%20Downloader%20Logo.png" alt="Citrix Downloader Logo"/>
+  <img src="https://github.com/Deyda/Citrix-Downloader/blob/main/img/CitrixDownloaderLogo.png" alt="Citrix Downloader Logo"/>
 </p>
 
 
