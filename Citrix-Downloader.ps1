@@ -150,6 +150,27 @@ If ($WebVersion -gt $eVersion) {
     $NewerVersion = $true
 }
 
+# Shortcut Creation
+If (!(Test-Path -Path "$env:USERPROFILE\Desktop\Citrix Downloader.lnk")) {
+    $WScriptShell = New-Object -ComObject 'WScript.Shell'
+    $ShortcutFile = "$env:USERPROFILE\Desktop\Citrix Downloader.lnk"
+    $Shortcut = $WScriptShell.CreateShortcut($ShortcutFile)
+    $Shortcut.TargetPath = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
+    $Shortcut.WorkingDirectory = "C:\Windows\System32\WindowsPowerShell\v1.0"
+    If (!(Test-Path -Path "$PSScriptRoot\shortcut")) { New-Item -Path "$PSScriptRoot\shortcut" -ItemType Directory | Out-Null }
+    If (!(Test-Path -Path "$PSScriptRoot\shortcut\CitrixDownloader.ico")) {Invoke-WebRequest -Uri https://raw.githubusercontent.com/Deyda/Citrix-Downloader/main/shortcut/CitrixDownloader.ico -OutFile ("$PSScriptRoot\shortcut\" + "CitrixDownloader.ico")}
+    $shortcut.IconLocation="$PSScriptRoot\shortcut\CitrixDownloader.ico"
+    $Shortcut.Arguments = '-noexit -ExecutionPolicy Bypass -file "' + "$PSScriptRoot" + '\Citrix-Downloader.ps1"'
+    $Shortcut.Save()
+    $Admin = [System.IO.File]::ReadAllBytes("$ShortcutFile")
+    $Admin[0x15] = $Admin[0x15] -bor 0x20
+    [System.IO.File]::WriteAllBytes("$ShortcutFile", $Admin)
+}
+If (!(Test-Path -Path "$PSScriptRoot\img\CitrixDownloaderLogo.png")) {
+    If (!(Test-Path -Path "$PSScriptRoot\img")) { New-Item -Path "$PSScriptRoot\img" -ItemType Directory | Out-Null }
+    Invoke-WebRequest -Uri https://github.com/Deyda/Citrix-Downloader/blob/main/img/CitrixDownloaderLogo.png -OutFile ("$PSScriptRoot\img\" + "CitrixDownloaderLogo.png")
+}
+
 # Script Version
 # ========================================================================================================================================
 Write-Output ""
