@@ -10,7 +10,7 @@ Download various Citrix components through a GUI without spending hours navigati
   Creation Date:    2021-10-22
 
   // NOTE: Purpose/Change
-  2020-06-20    Initial Version by Ryan Butler
+  2020-06-20        Initial Version by Ryan Butler
   2021-10-22		Customization
   2021-12-22		Import of the download list into the script, no helper files needed anymore / Add Version Number and Version Check with Auto Update Function / Add Citrix 1912 CU4 and 2112 content
 
