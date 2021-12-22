@@ -5,7 +5,7 @@ Download multiple VDA and ISO versions from Citrix.com
 Download various Citrix components through a GUI without spending hours navigating through the various Citrix sub-sites.
 
 .NOTES
-  Version:          0.01.1
+  Version:          0.01.2
   Author:           Manuel Winkel <www.deyda.net>
   Creation Date:    2021-10-22
 
@@ -158,8 +158,8 @@ If (!(Test-Path -Path "$env:USERPROFILE\Desktop\Citrix Downloader.lnk")) {
     $Shortcut.TargetPath = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
     $Shortcut.WorkingDirectory = "C:\Windows\System32\WindowsPowerShell\v1.0"
     If (!(Test-Path -Path "$PSScriptRoot\shortcut")) { New-Item -Path "$PSScriptRoot\shortcut" -ItemType Directory | Out-Null }
-    If (!(Test-Path -Path "$PSScriptRoot\shortcut\CitrixDownloader.ico")) {Invoke-WebRequest -Uri https://raw.githubusercontent.com/Deyda/Citrix-Downloader/main/shortcut/CitrixDownloader.ico -OutFile ("$PSScriptRoot\shortcut\" + "CitrixDownloader.ico")}
-    $shortcut.IconLocation="$PSScriptRoot\shortcut\CitrixDownloader.ico"
+    If (!(Test-Path -Path "$PSScriptRoot\shortcut\CitrixDownloaderLogo.ico")) {Invoke-WebRequest -Uri https://raw.githubusercontent.com/Deyda/Citrix-Downloader/main/shortcut/CitrixDownloader.ico -OutFile ("$PSScriptRoot\shortcut\" + "CitrixDownloaderLogo.ico")}
+    $shortcut.IconLocation="$PSScriptRoot\shortcut\CitrixDownloaderLogo.ico"
     $Shortcut.Arguments = '-noexit -ExecutionPolicy Bypass -file "' + "$PSScriptRoot" + '\Citrix-Downloader.ps1"'
     $Shortcut.Save()
     $Admin = [System.IO.File]::ReadAllBytes("$ShortcutFile")
