@@ -158,7 +158,7 @@ If (!(Test-Path -Path "$env:USERPROFILE\Desktop\Citrix Downloader.lnk")) {
     $Shortcut.TargetPath = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
     $Shortcut.WorkingDirectory = "C:\Windows\System32\WindowsPowerShell\v1.0"
     If (!(Test-Path -Path "$PSScriptRoot\shortcut")) { New-Item -Path "$PSScriptRoot\shortcut" -ItemType Directory | Out-Null }
-    If (!(Test-Path -Path "$PSScriptRoot\shortcut\CitrixDownloaderLogo.ico")) {Invoke-WebRequest -Uri https://raw.githubusercontent.com/Deyda/Citrix-Downloader/main/shortcut/CitrixDownloader.ico -OutFile ("$PSScriptRoot\shortcut\" + "CitrixDownloaderLogo.ico")}
+    If (!(Test-Path -Path "$PSScriptRoot\shortcut\CitrixDownloaderLogo.ico")) {Invoke-WebRequest -Uri https://raw.githubusercontent.com/Deyda/Citrix-Downloader/main/shortcut/CitrixDownloaderLogo.ico -OutFile ("$PSScriptRoot\shortcut\" + "CitrixDownloaderLogo.ico")}
     $shortcut.IconLocation="$PSScriptRoot\shortcut\CitrixDownloaderLogo.ico"
     $Shortcut.Arguments = '-noexit -ExecutionPolicy Bypass -file "' + "$PSScriptRoot" + '\Citrix-Downloader.ps1"'
     $Shortcut.Save()
