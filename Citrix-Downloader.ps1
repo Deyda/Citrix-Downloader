@@ -5,14 +5,14 @@ Download multiple VDA and ISO versions from Citrix.com
 Download various Citrix components through a GUI without spending hours navigating through the various Citrix sub-sites.
 
 .NOTES
-  Version:          0.01.2
+  Version:          0.01.3
   Author:           Manuel Winkel <www.deyda.net>
   Creation Date:    2021-10-22
 
   // NOTE: Purpose/Change
   2020-06-20        Initial Version by Ryan Butler
   2021-10-22		Customization
-  2021-12-22		Import of the download list into the script, no helper files needed anymore / Add Version Number and Version Check with Auto Update Function / Add Citrix 1912 CU4 and 2112 content
+  2021-12-22		Import of the download list into the script, no helper files needed anymore / Add Version Number and Version Check with Auto Update Function / Add Citrix 1912 CU4 and 2112 content / Add shortcut creation
 
 #>
 
@@ -139,7 +139,7 @@ $ErrorActionPreference = 'SilentlyContinue'
 
 # Is there a newer Evergreen Script version?
 # ========================================================================================================================================
-$eVersion = "0.01.2"
+$eVersion = "0.01.3"
 [bool]$NewerVersion = $false
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $WebResponseVersion = Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/Deyda/Citrix-Downloader/main/Citrix-Downloader.ps1"
