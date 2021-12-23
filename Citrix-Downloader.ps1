@@ -5,14 +5,15 @@ Download multiple VDA and ISO versions from Citrix.com
 Download various Citrix components through a GUI without spending hours navigating through the various Citrix sub-sites.
 
 .NOTES
-  Version:          0.01.3
+  Version:          0.01.4
   Author:           Manuel Winkel <www.deyda.net>
   Creation Date:    2021-10-22
 
   // NOTE: Purpose/Change
-  2020-06-20        Initial Version by Ryan Butler
-  2021-10-22		Customization
-  2021-12-22		Import of the download list into the script, no helper files needed anymore / Add Version Number and Version Check with Auto Update Function / Add Citrix 1912 CU4 and 2112 content / Add shortcut creation
+  2020-06-20    Initial Version by Ryan Butler
+  2021-10-22    Customization
+  2021-12-22    Import of the download list into the script, no helper files needed anymore / Add Version Number and Version Check with Auto Update Function / Add Citrix 1912 CU4 and 2112 content / Add shortcut creation
+  2021-12-23    Change password fields
 
 #>
 
@@ -80,10 +81,10 @@ function get-ctxbinary {
   Path to store downloaded file. Must contain following slash (c:\temp\)
 .PARAMETER CitrixUserName
   Citrix.com username
-.PARAMETER CitrixPW
+.PARAMETER CitrixPassword
   Citrix.com password
 .EXAMPLE
-  Get-CTXBinary -DLNUMBER "16834" -DLEXE "Citrix_Virtual_Apps_and_Desktops_7_1912.iso" -CitrixUserName "mycitrixusername" -CitrixPW "mycitrixpassword" -DLPATH "C:\temp\"
+  Get-CTXBinary -DLNUMBER "16834" -DLEXE "Citrix_Virtual_Apps_and_Desktops_7_1912.iso" -CitrixUserName "mycitrixusername" -CitrixPassword "mycitrixpassword" -DLPATH "C:\temp\"
 #>
 	Param(
 		[Parameter(Mandatory = $true)]$DLNUMBER,
