@@ -81,10 +81,10 @@ function get-ctxbinary {
   Path to store downloaded file. Must contain following slash (c:\temp\)
 .PARAMETER CitrixUserName
   Citrix.com username
-.PARAMETER CitrixPassword
+.PARAMETER CitrixPW
   Citrix.com password
 .EXAMPLE
-  Get-CTXBinary -DLNUMBER "16834" -DLEXE "Citrix_Virtual_Apps_and_Desktops_7_1912.iso" -CitrixUserName "mycitrixusername" -CitrixPassword "mycitrixpassword" -DLPATH "C:\temp\"
+  Get-CTXBinary -DLNUMBER "16834" -DLEXE "Citrix_Virtual_Apps_and_Desktops_7_1912.iso" -CitrixUserName "mycitrixusername" -CitrixPW "mycitrixpassword" -DLPATH "C:\temp\"
 #>
 	Param(
 		[Parameter(Mandatory = $true)]$DLNUMBER,
@@ -140,7 +140,7 @@ $ErrorActionPreference = 'SilentlyContinue'
 
 # Is there a newer Evergreen Script version?
 # ========================================================================================================================================
-$eVersion = "0.01.3"
+$eVersion = "0.01.4"
 [bool]$NewerVersion = $false
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $WebResponseVersion = Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/Deyda/Citrix-Downloader/main/Citrix-Downloader.ps1"
@@ -244,5 +244,5 @@ $dls = $downloads | Out-GridView -PassThru -Title "Select Installer or ISO to do
 #Processes each download
 foreach ($dl in $dls) {
     write-host "Downloading $($dl.filename)..."
-    Get-CTXBinary -DLNUMBER $dl.dlnumber -DLEXE $dl.filename -CitrixUserName $CitrixUserName -CitrixPassword $CitrixPW -DLPATH $path
+    Get-CTXBinary -DLNUMBER $dl.dlnumber -DLEXE $dl.filename -CitrixUserName $CitrixUserName -CitrixPW $CitrixPW -DLPATH $path
 }
