@@ -65,7 +65,6 @@ Function Get-Folder($initialDirectory)
 #Prompt for folder path
 $path = Get-Folder
 
-#Import Download Function
 function get-ctxbinary {
 	<#
 .SYNOPSIS
@@ -235,7 +234,6 @@ $CitrixUserName = $creds.UserName
 $CitrixPW = $creds.GetNetworkCredential().Password
 
 #Imports $CSV with download information
-#$downloads = import-csv -Path ".\Helpers\Downloads.csv" -Delimiter ","
 $downloads = $CSV | ConvertFrom-Csv -Delimiter ","
 
 #Use CTRL to select multiple
