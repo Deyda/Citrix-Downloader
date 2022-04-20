@@ -5,7 +5,7 @@ Download multiple VDA and ISO versions from Citrix.com
 Download various Citrix components through a GUI without spending hours navigating through the various Citrix sub-sites.
 
 .NOTES
-  Version:          0.01.4
+  Version:          0.01.5
   Author:           Manuel Winkel <www.deyda.net>
   Creation Date:    2021-10-22
 
@@ -14,34 +14,36 @@ Download various Citrix components through a GUI without spending hours navigati
   2021-10-22    Customization
   2021-12-22    Import of the download list into the script, no helper files needed anymore / Add Version Number and Version Check with Auto Update Function / Add Citrix 1912 CU4 and 2112 content / Add shortcut creation
   2021-12-23    Change password fields
+  2021-04-19    Add Version 1912 CU5 and 2203
 
 #>
 
 
 $CSV = @"
 "dlnumber","filename","name"
-"19993","Citrix_Virtual_Apps_and_Desktops_7_1912_4000.iso","Citrix Virtual Apps and Desktops 7 1912 CU4 ISO"
+"20477","Citrix_Virtual_Apps_and_Desktops_7_1912_5000.iso","Citrix Virtual Apps and Desktops 7 1912 CU5 ISO"
 "20428","Citrix_Virtual_Apps_and_Desktops_7_2203.iso","Citrix Virtual Apps and Desktops 7 2203 ISO"
 
-"19994","VDAServerSetup_1912.exe","Multi-session OS Virtual Delivery Agent 1912 LTSR CU4"
-"19995","VDAWorkstationSetup_1912.exe","Single-session OS Virtual Delivery Agent 1912 LTSR CU4"
-"19996","VDAWorkstationCoreSetup_1912.exe","Single-session OS Core Services Virtual Delivery Agent 1912 LTSR CU4"
+"20478","VDAServerSetup_1912.exe","Multi-session OS Virtual Delivery Agent 1912 LTSR CU5"
+"20479","VDAWorkstationSetup_1912.exe","Single-session OS Virtual Delivery Agent 1912 LTSR CU5"
+"20480","VDAWorkstationCoreSetup_1912.exe","Single-session OS Core Services Virtual Delivery Agent 1912 LTSR CU5"
 
-"20116","VDAServerSetup_2112.exe","Multi-session OS Virtual Delivery Agent 2112"
-"20117","VDAWorkstationSetup_2112.exe","Single-session OS Virtual Delivery Agent 2112"
-"20118","VDAWorkstationCoreSetup_2112.exe","Single-session OS Core Services Virtual Delivery Agent 2112"
+"20429","VDAServerSetup_2203.exe","Multi-session OS Virtual Delivery Agent 2203 LTSR"
+"20430","VDAWorkstationSetup_2203.exe","Single-session OS Virtual Delivery Agent 2203 LTSR"
+"20431","VDAWorkstationCoreSetup_2203.exe","Single-session OS Core Services Virtual Delivery Agent 2203 LTSR"
 
-"19997","ProfileMgmt_1912.zip","Profile Management 1912 LTSR CU4"
-"19803","ProfileMgmt_2112.zip","Profile Management 2112"
+"20482","ProfileMgmt_1912.zip","Profile Management 1912 LTSR CU5"
+"19803","ProfileMgmt_2203.zip","Profile Management 2203 LTSR"
 
-"19999","Citrix_Provisioning_1912_19.iso","Citrix Provisioning 1912 CU4"
-"20119","Citrix_Provisioning_2112.iso","Citrix Provisioning 2112"
+"20488","Citrix_Provisioning_1912_25.iso","Citrix Provisioning 1912 CU5"
+"20432","Citrix_Provisioning_2203.iso","Citrix Provisioning 2203"
 
 "9803","Citrix_Licensing_11.17.2.0_BUILD_37000.zip","License Server for Windows - Version 11.17.2.0 Build 37000"
 
-"19998","CitrixStoreFront-x64.exe ","StoreFront 1912 LTSR CU4"
+"20485","CitrixStoreFront-x64.exe ","StoreFront 1912 LTSR CU5"
+"20791","CitrixStoreFront-x64.exe ","StoreFront 2203 LTSR"
 
-"20209","Workspace-Environment-Management-v-2112-01-00-01.zip","Workspace Environment Management 2112"
+"20579","Workspace-Environment-Management-v-2203-01-00-01.zip","Workspace Environment Management 2203"
 "@
 
 #Folder dialog
@@ -139,7 +141,7 @@ $ErrorActionPreference = 'SilentlyContinue'
 
 # Is there a newer Evergreen Script version?
 # ========================================================================================================================================
-$eVersion = "0.01.4"
+$eVersion = "0.01.5"
 [bool]$NewerVersion = $false
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $WebResponseVersion = Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/Deyda/Citrix-Downloader/main/Citrix-Downloader.ps1"
