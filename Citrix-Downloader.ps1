@@ -5,7 +5,7 @@ Download multiple VDA and ISO versions from Citrix.com
 Download various Citrix components through a GUI without spending hours navigating through the various Citrix sub-sites.
 
 .NOTES
-  Version:          0.01.5
+  Version:          0.01.6
   Author:           Manuel Winkel <www.deyda.net>
   Creation Date:    2021-10-22
 
@@ -14,13 +14,15 @@ Download various Citrix components through a GUI without spending hours navigati
   2021-10-22    Customization
   2021-12-22    Import of the download list into the script, no helper files needed anymore / Add Version Number and Version Check with Auto Update Function / Add Citrix 1912 CU4 and 2112 content / Add shortcut creation
   2021-12-23    Change password fields
-  2021-04-19    Add Version 1912 CU5 and 2203
+  2022-04-19    Add Version 1912 CU5 and 2203
+  2022-05-24    Add Version 7.15 CU 8
 
 #>
 
 
 $CSV = @"
 "dlnumber","filename","name"
+"19758","XenApp_and_XenDesktop_7_15_8000.iso","XenApp 7.15.8000 / XenDesktop 7.15.8000"
 "20477","Citrix_Virtual_Apps_and_Desktops_7_1912_5000.iso","Citrix Virtual Apps and Desktops 7 1912 CU5 ISO"
 "20428","Citrix_Virtual_Apps_and_Desktops_7_2203.iso","Citrix Virtual Apps and Desktops 7 2203 ISO"
 
@@ -139,9 +141,9 @@ function get-ctxbinary {
 $ProgressPreference = 'SilentlyContinue'
 $ErrorActionPreference = 'SilentlyContinue'
 
-# Is there a newer Evergreen Script version?
+# Is there a newer Citrix Downloader version?
 # ========================================================================================================================================
-$eVersion = "0.01.5"
+$eVersion = "0.01.6"
 [bool]$NewerVersion = $false
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $WebResponseVersion = Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/Deyda/Citrix-Downloader/main/Citrix-Downloader.ps1"
